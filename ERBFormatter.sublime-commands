@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "ERB Formatter: Format Current File",
+        "command": "erb_formatter"        
+    }
+]

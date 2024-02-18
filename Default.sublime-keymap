@@ -1,9 +1,9 @@
-[
-    {
-        "keys": ["ctrl+shift+h"], // Change the key binding as you prefer
-        "command": "erb_formatter",
-        "context": [
-            { "key": "selector", "operator": "equal", "operand": "text.html.erb, text.html.basic" }
-        ]
-    }
-]
+// [
+//     {
+//         "keys": ["ctrl+shift+h"], // Change the key binding as you prefer
+//         "command": "erb_formatter",
+//         "context": [
+//             { "key": "selector", "operator": "equal", "operand": "text.html.erb, text.html.basic, text.html.rails" }
+//         ]
+//     }
+// ]
