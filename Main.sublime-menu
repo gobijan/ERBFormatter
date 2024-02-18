@@ -1,0 +1,36 @@
+[
+    {
+        "id": "preferences",
+        "children":
+        [
+            {
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "ERBFormatter",
+                        "children":
+                        [
+                            {
+                                "caption": "Settings",
+                                "command": "edit_settings",
+                                "args": {
+                                    "base_file": "${packages}/ERBFormatter/ERBFormatter.sublime-settings",
+                                    "default": "{\n    \"$0\"\n}"
+                                }
+                            },
+                            {
+                                "caption": "Key Bindings",
+                                "command": "edit_settings",
+                                "args": {
+                                    "base_file": "${packages}/ERBFormatter/Default.sublime-keymap",
+                                    "default": "[\n    {$0}\n]"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
