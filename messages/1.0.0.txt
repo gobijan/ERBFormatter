@@ -1,0 +1,4 @@
+This is the initial version of ERB Formatter for Sublime Text.
+Please check the readme and report bugs.
+
+Cheers Bijan
