@@ -6,8 +6,8 @@ the htmlbeautifier gem.
 To get started, configure the path to your htmlbeautifier executable 
 in the ERBFormatter.sublime-settings file, if it's not in your system PATH.
 
-Remember to install https://github.com/threedaymonk/htmlbeautifier:
+Remember to install https://github.com/nebulab/erb-formatter:
 
-    gem install htmlbeautifier
+    gem install erb-formatter
 
 Cheers @BijanRahnema

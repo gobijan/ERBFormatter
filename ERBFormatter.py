@@ -1,26 +1,34 @@
 import sublime
 import sublime_plugin
 import subprocess
+import os
 
 class ErbFormatterCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         settings = sublime.load_settings("ERBFormatter.sublime-settings")
-        htmlbeautifier_path = settings.get("htmlbeautifier_path", "htmlbeautifier")
+        erb_format_path = settings.get("erb_format_path", "erb-format")
 
-        # Prepare the command
-        if htmlbeautifier_path:
-            cmd = [htmlbeautifier_path]
-        else:
-            cmd = ["htmlbeautifier"]
+        # Expand the tilde to the user's home directory
+        erb_format_path = os.path.expanduser(erb_format_path)
 
-        region = sublime.Region(0, self.view.size())
-        original_content = self.view.substr(region)
+        if not os.path.exists(erb_format_path):
+            sublime.error_message("ERB Formatter: erb-format not found at " + erb_format_path)
+            return
 
-        # Execute the command
-        process = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-        beautified_content, error = process.communicate(input=original_content.encode('utf-8'))
+        file_path = self.view.file_name()
+        if not file_path:
+            sublime.error_message("ERB Formatter: File must be saved before formatting.")
+            return
 
-        if process.returncode == 0:
-            self.view.replace(edit, region, beautified_content.decode('utf-8'))
-        else:
-            sublime.error_message("Error: " + error.decode('utf-8'))
+        # Prepare the command to include the file path, ensuring it's properly formatted for shell execution
+        cmd = [erb_format_path, file_path]
+
+        try:
+            # Execute the command, ensuring shell=True is used correctly with a string command
+            output = subprocess.check_output(cmd, universal_newlines=True)
+            print(output)
+            if output:
+                # Replace the entire content with the output
+                self.view.replace(edit, sublime.Region(0, self.view.size()), output)
+        except Exception as e:
+            sublime.error_message("ERB Formatter Exception:" + e)
