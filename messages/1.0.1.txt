@@ -1,0 +1,3 @@
+Switch to erb-formatter gem as it producers nicer output
+
+https://github.com/nebulab/erb-formatter
